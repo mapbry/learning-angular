@@ -1,0 +1,21 @@
+name: Test Input Logging 
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to deploy'     
+        required: true
+
+jobs:
+  log_message:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
+      - name: Log message
+        run: |
+          echo "This message is logged to the console!"
+          echo "Deploying version ${{ github.event.inputs.version }}!"
